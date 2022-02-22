@@ -1,0 +1,57 @@
+# 1k Money
+# 64 Diamonds
+
+
+#To make a new voucher just copy and paste!
+#If you have any problem with the code contact me on discord: StXfTb#1999
+
+command /givevouchers <text> <player>:
+    aliases: /givevc, /gv
+    permission: vouchers.give
+    usage: /givevouchers <nameOfVoucher> <player>
+    permission message: &cYou dont have the permission to use this command!
+    trigger:
+        if arg-1 is not set:
+            send "&cPlease select a voucher! To see a list of vouchers use /vouchers!"
+        if arg-2 is not set:
+            send "&cPlease specify a player."
+        if arg-1 is "1k_money":
+            if arg-2 is set:
+                give arg-2 paper named "&b&l1k Money"
+        if arg-1 is "64_diamonds":
+            if arg-2 is set:
+                give arg-2 paper named "&b&l64 Diamonds"
+
+
+On right click with paper:
+    if name of tool of player is "&b&l1k Money": # They need to be the same!!!
+        send "&c&lYou have succesfuly activated the voucher!"
+        execute console command "/eco give %player% 1000" # You need essentials plugin for this to work!!!
+        remove 1 of tool from tool
+        play sound "entity.firework_rocket.launch" at location of player
+        wait 1 second
+        play sound "entity.firework_rocket.large_blast_far" at location of player
+
+On right click with paper:
+    if name of tool of player is "&b&l64 Diamonds": # They need to be the same!!!
+        send "&c&lYou have succesfuly activated the voucher!"
+        execute console command "/give %player% diamond 64" # You need essentials plugin for this to work!!!
+        remove 1 of tool from tool
+        play sound "entity.firework_rocket.launch" at location of player
+        wait 1 second
+        play sound "entity.firework_rocket.large_blast_far" at location of player
+
+
+
+command /vouchers:
+    aliases: /vc
+    permission: vouchers.list
+    permission message: &cYou dont have the permission to use this command!
+    trigger:
+        send "&b&l-------------&f&lVouchers&b&l-------------" to player
+        send "&b&l1k Money = &c&l1k_money" to player
+        send "&b&l64 Diamonds = &c&l64_diamonds" to player
+
+
+
+# Made by VexCoder
